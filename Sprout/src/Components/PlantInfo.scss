@@ -45,11 +45,29 @@
   margin: 20px 0;
 }
 
-.selected-card {
-  width: 20rem; /* Adjust card width as needed */
-  border: 2px solid green; /* Example border style */
-  /* Add other styles as needed */
+.card-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center vertically */
+  height: 100%; /* Ensure the container takes full height */
 }
+
+.no-results {
+  margin-top: 10%;
+  font-size: 1.8rem;
+}
+
+.single-card {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center vertically */
+  height: 100%; /* Ensure the container takes full height */
+}
+
+.card-grid .row {
+  justify-content: center;
+}
+
 
 
 

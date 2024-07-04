@@ -30,16 +30,15 @@ const Navbar = ({ withSearch, setSearchQuery }) => {
           {/* Add more Nav.Link components as needed */}
         </Nav>
         {withSearch && (
-          <Form className="form-inline d-flex">
+          <Form className="form-inline d-flex" onSubmit={(e) => { e.preventDefault(); handleSearch(); }}>
             <FormControl
               type="search"
-              placeholder="Search"
+              placeholder="Search the greenpage..."
               className="me-2"
               aria-label="Search"
-              style={{ width: '500px' }}
+              style={{ width: '800px', border: '3px solid green', borderRadius: '2px', }}
               onChange={handleSearchChange}
             />
-            <Button variant="outline-success" style={searchButtonStyle}>Search</Button>
           </Form>
         )}
       </Container>

@@ -9,6 +9,7 @@ const App = () => {
     <div className="app-container">
     <Router>
       <Routes>
+      <Route path="/" element={<LandingPage />} />
         <Route exact path="/LandingPage" element={<LandingPage />} />
         <Route path="/PlantInfo" element={<PlantInfo />} />
         {/* Add more routes as needed */}
