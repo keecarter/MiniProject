@@ -1,0 +1,62 @@
+
+
+
+.plant-info-page .navbar {
+  width: 100%;
+  background-color: white !important; /* Adjust background color as needed */
+  padding: 10px;
+  text-align: center;
+}
+
+.nav-item {
+  font-family: 'Shadows Into Light', 'Brush Script MT';
+  font-size: 30px;
+  font-weight: bold;
+  padding: 5px;
+  list-style: none; /* Remove bullet points */
+  margin-right: 10px; /* Adjust spacing between items */
+}
+
+.nav-item:last-child {
+  margin-right: 0; /* Remove margin from the last item */
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black; /* Adjust link color */
+}
+
+.nav-link:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+.plant-info-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  min-height: 100vh; /* Ensure the page takes up at least the viewport height */
+  min-width: 100vw;
+}
+
+
+.title {
+  margin: 20px 0;
+}
+
+.selected-card {
+  width: 20rem; /* Adjust card width as needed */
+  border: 2px solid green; /* Example border style */
+  /* Add other styles as needed */
+}
+
+
+
+
+
+
+
+
+
+

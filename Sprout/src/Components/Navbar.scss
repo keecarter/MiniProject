@@ -1,0 +1,63 @@
+.navbar {
+    width: 100%;
+    background-color: #b4f4bd !important; /* Adjust background color as needed */
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .navbar-list {
+    list-style-type: none; /* Removes bullet points */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Centers the items */
+    font-family: 'Shadows Into Light', 'Brush Script MT';
+  }
+  
+  .navbar-item {
+    margin: 0 15px; /* Adjust spacing between items */
+  }
+  
+  .navbar-item a {
+    text-decoration: none; /* Removes underline from links */
+    color: #000; /* Adjust color as needed */
+    font-size: 1.8rem; /* Adjust font size as needed */
+  }
+  
+  .navbar-item a:hover, .navbar-item a:focus {
+    text-decoration: underline; /* Adds underline on hover and focus */
+  }
+ 
+  
+ /* Styles for sidebar */
+.sidebar {
+    height: 100vh;
+    width: 200px; /* Adjust the width as needed */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    color: white;
+    padding-top: 20px;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .sidebar a:hover {
+    background-color: #575757;
+  }
+  

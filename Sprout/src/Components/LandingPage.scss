@@ -1,0 +1,142 @@
+
+body{
+  margin: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #b4f4b4 !important;
+  width: 100%;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 800px; /* Adjust the max-width as needed */
+}
+
+.centered-container {
+  margin-bottom: 20px;
+}
+
+.navbar {
+  width: 100%;
+  background-color: #b4f4bd !important; /* Adjust background color as needed */
+  padding: 10px;
+  text-align: center;
+}
+
+/* Add any additional styles for the page or elements here */
+
+
+.nav-item {
+  font-family: 'Shadows Into Light', 'Brush Script MT';
+  font-size: 30px;
+  font-weight: bold;
+  padding: 5px;
+  list-style: none; /* Remove bullet points */
+  margin-right: 10px; /* Adjust spacing between items */
+}
+
+.nav-item:last-child {
+  margin-right: 0; /* Remove margin from the last item */
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black; /* Adjust link color */
+}
+
+.nav-link:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+
+
+
+footer {
+  background-color: transparent;
+  font-size: 10px;
+  bottom: 0;
+  position: absolute;
+  width: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  left: 0;
+  padding: 10px;
+  color: black;
+}
+
+footer > ul {
+  display: flex;
+  justify-content: flex-start;
+  list-style: none;
+  padding: 0 10px;
+  margin: 0;
+  flex-direction: row;
+}
+
+footer > ul > li {
+  padding: 0 10px;
+}
+
+footer > span {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.9em;
+  color: black;
+}
+
+#logo {
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+
+  html, body {
+      overflow: hidden;
+  }
+  
+  .container {
+      width: 90%;
+      font-size: 50px;
+  }
+
+  .nav-item {
+      font-size: 20px;
+  }
+
+  footer {
+      flex-direction: column;
+      align-items: center;
+      font-size: 8px;
+  }
+
+  footer > ul {
+      align-items: center;
+  }
+
+  footer > ul > li {
+      padding: 5px 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+      width: 50%; /* Adjust the width of the container as needed */
+  }
+
+  #navbar {
+      width: 100%; /* Adjust the width of the navbar to match the container */
+  }
+}
+
