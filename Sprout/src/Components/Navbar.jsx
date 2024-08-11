@@ -26,8 +26,8 @@ const Navbar = ({ withSearch, setSearchQuery }) => {
         <BootstrapNavbar.Brand href="#home"></BootstrapNavbar.Brand>
         <Nav className="me-auto">
           <Nav.Link as={Link} to="/LandingPage" className="nav-link" style={{ fontFamily: 'Shadows Into Light, Brush Script MT', fontSize: '1.8rem', color: 'black'}}>Home</Nav.Link>
-          <Nav.Link as={Link} to="/PlantInfo" className="nav-link" style={{ fontFamily: 'Shadows Into Light, Brush Script MT', fontSize: '1.8rem', color: 'black'}}>Plant Info</Nav.Link>
-          {/* Add more Nav.Link components as needed */}
+          <Nav.Link as={Link} to="/PlantInfo" className="nav-link" style={{ fontFamily: 'Shadows Into Light, Brush Script MT', fontSize: '1.8rem', color: 'black'}}>Learn</Nav.Link>
+          <Nav.Link as={Link} to="/Account" className="nav-link" style={{ fontFamily: 'Shadows Into Light, Brush Script MT', fontSize: '1.8rem', color: 'black'}}>Account</Nav.Link>
         </Nav>
         {withSearch && (
           <Form className="form-inline d-flex" onSubmit={(e) => { e.preventDefault(); handleSearch(); }}>

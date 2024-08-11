@@ -2,11 +2,11 @@ import express from 'express';
 import { dirname, join, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import mongoose from 'mongoose';
-import plantsRouter from './routes/plantsRoute.js';
 import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
 import fetchAndInsertData from './fetchData.js'; // Import the fetch function
+import usersRouter from './routes/users.js';
 
 // Compute __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -40,8 +40,11 @@ mongoose.connect(mongoURI, {
     // Serve static files from Vite's build output directory
     app.use(express.static(join(__dirname, 'dist')));
 
-    // Routes
+    // Routes for plants
     app.use('/plants', plantsRouter);
+
+    // Route for user registration and account management
+    app.use('/api/users', usersRouter);
 
     // Catch-all route for SPA handling
     app.get('*', (req, res) => {

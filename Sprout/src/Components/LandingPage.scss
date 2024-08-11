@@ -100,6 +100,7 @@ footer > span {
   border-radius: 10px;
 }
 
+
 @media only screen and (max-width: 600px) {
 
   html, body {
@@ -127,6 +128,13 @@ footer > span {
 
   footer > ul > li {
       padding: 5px 0;
+  }
+
+  .navbar-nav.me-auto {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
   }
 }
 
