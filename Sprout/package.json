@@ -14,12 +14,17 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
-    "axios": "^1.7.2",
+    "axios": "^1.7.3",
     "bootstrap": "^5.3.3",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "gsap": "^3.12.5",
+    "helmet": "^7.1.0",
     "karas": "^0.63.7",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.2",
+    "morgan": "^1.10.0",
+    "node-fetch": "^3.3.2",
     "node-sass": "^9.0.0",
     "path": "^0.12.7",
     "react": "^18.3.1",
@@ -42,5 +47,10 @@
     "eslint-plugin-react-refresh": "^0.4.7",
     "sass": "^1.77.6",
     "vite": "^5.3.1"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

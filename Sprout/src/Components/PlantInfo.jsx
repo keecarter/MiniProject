@@ -1,238 +1,52 @@
-import React, { useState } from 'react';
-import { Card, Row, Col, Container } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Card, Row, Col, Container, Modal, Button } from 'react-bootstrap';
 import Navbar from './Navbar'; // Adjust the path as needed
 import { Helmet } from 'react-helmet';
 import './PlantInfo.scss'; // Import your custom styles
-import CaliforniaElephantEars from './Images/CaliforniaElephantEars.jpeg';
-import HeartleafPhilodendron from './Images/HeartleafPhilodendron.jpeg';
-import HotFlashCaladium from './Images/HotFlashCaladium.jpeg';
-import LemonSpiderPlant from './Images/ElephantBush.jpeg';
-import Mint from './Images/Mint.jpeg';
-import PeaceLilly from './Images/PeaceLilly.jpeg';
-import RubberPlant from './Images/RubberPlant.jpeg';
-import RubberPlantTineke from './Images/RubberPlantTineke.jpeg';
-import TradescantiaNanouk from './Images/TradescantiaNanouk.jpeg';
-import VariegatedVinca from './Images/ElephantBush.jpeg';
-import VariegatumSpiderPlant from './Images/VariegatumSpiderPlant.jpeg';
-import WhiteBirdOfParadise from './Images/WhiteBirdOfParadise.jpeg';
-import ElephantBush from './Images/ElephantBush.jpeg';
 
 const PlantInfo = () => {
+  const [plants, setPlants] = useState([]);
+  const [selectedPlant, setSelectedPlant] = useState(null); // State to store selected plant details
+  const [showModal, setShowModal] = useState(false); // State to manage modal visibility
   const [searchQuery, setSearchQuery] = useState('');
 
-  const plants = [
-    { 
-      id: 1, 
-      name: 'California Elephant Ears', 
-      image_url: CaliforniaElephantEars, 
-      description: [
-        { label: 'Difficulty', value: 'Moderate' },
-        { label: 'Soil', value: 'Well-drained' },
-        { label: 'Sun', value: 'Partial shade' },
-        { label: 'Pot', value: 'Large' },
-        { label: 'Water', value: 'Moderate' },
-        { label: 'Temperature', value: '18-25°C' },
-        { label: 'Toxicity', value: 'Non-toxic' },
-        { label: 'Fertilizer', value: 'Monthly' },
-        { label: 'Humidity', value: 'High' },
-        { label: 'Flowers', value: 'Yes' }
-      ]
-    },
-    { id: 2, 
-      name: 'Elephant Bush', 
-      image_url: ElephantBush, 
-      description: [
-        { label: 'Difficulty', value: 'Moderate' },
-        { label: 'Soil', value: 'Well-drained' },
-        { label: 'Sun', value: 'Partial shade' },
-        { label: 'Pot', value: 'Large' },
-        { label: 'Water', value: 'Moderate' },
-        { label: 'Temperature', value: '18-25°C' },
-        { label: 'Toxicity', value: 'Non-toxic' },
-        { label: 'Fertilizer', value: 'Monthly' },
-        { label: 'Humidity', value: 'High' },
-        { label: 'Flowers', value: 'Yes' }
-      ] 
-    },
-    { id: 3, 
-      name: 'Heartleaf Philoden', 
-      image_url: HeartleafPhilodendron, 
-      description: [
-        { label: 'Difficulty', value: 'Moderate' },
-        { label: 'Soil', value: 'Well-drained' },
-        { label: 'Sun', value: 'Partial shade' },
-        { label: 'Pot', value: 'Large' },
-        { label: 'Water', value: 'Moderate' },
-        { label: 'Temperature', value: '18-25°C' },
-        { label: 'Toxicity', value: 'Non-toxic' },
-        { label: 'Fertilizer', value: 'Monthly' },
-        { label: 'Humidity', value: 'High' },
-        { label: 'Flowers', value: 'Yes' }
-      ] 
-    },
-    { id: 4, 
-      name: 'Hot Flash Caladium', 
-      image_url: HotFlashCaladium, 
-      description: [
-        { label: 'Difficulty', value: 'Moderate' },
-        { label: 'Soil', value: 'Well-drained' },
-        { label: 'Sun', value: 'Partial shade' },
-        { label: 'Pot', value: 'Large' },
-        { label: 'Water', value: 'Moderate' },
-        { label: 'Temperature', value: '18-25°C' },
-        { label: 'Toxicity', value: 'Non-toxic' },
-        { label: 'Fertilizer', value: 'Monthly' },
-        { label: 'Humidity', value: 'High' },
-        { label: 'Flowers', value: 'Yes' }
-      ] 
-    },
-    { id: 5, 
-      name: 'Lemon Spider Plant', 
-      image_url: LemonSpiderPlant, 
-      description: [
-        { label: 'Difficulty', value: 'Moderate' },
-        { label: 'Soil', value: 'Well-drained' },
-        { label: 'Sun', value: 'Partial shade' },
-        { label: 'Pot', value: 'Large' },
-        { label: 'Water', value: 'Moderate' },
-        { label: 'Temperature', value: '18-25°C' },
-        { label: 'Toxicity', value: 'Non-toxic' },
-        { label: 'Fertilizer', value: 'Monthly' },
-        { label: 'Humidity', value: 'High' },
-        { label: 'Flowers', value: 'Yes' }
-      ] 
-    },
-    { id: 6, 
-      name: 'Mint', 
-      image_url: Mint, 
-      description: [
-        { label: 'Difficulty', value: 'Moderate' },
-        { label: 'Soil', value: 'Well-drained' },
-        { label: 'Sun', value: 'Partial shade' },
-        { label: 'Pot', value: 'Large' },
-        { label: 'Water', value: 'Moderate' },
-        { label: 'Temperature', value: '18-25°C' },
-        { label: 'Toxicity', value: 'Non-toxic' },
-        { label: 'Fertilizer', value: 'Monthly' },
-        { label: 'Humidity', value: 'High' },
-        { label: 'Flowers', value: 'Yes' }
-      ] 
-    },
-    { id: 7, 
-      name: 'Peace Lilly', 
-      image_url: PeaceLilly, 
-      description: [
-        { label: 'Difficulty', value: 'Moderate' },
-        { label: 'Soil', value: 'Well-drained' },
-        { label: 'Sun', value: 'Partial shade' },
-        { label: 'Pot', value: 'Large' },
-        { label: 'Water', value: 'Moderate' },
-        { label: 'Temperature', value: '18-25°C' },
-        { label: 'Toxicity', value: 'Non-toxic' },
-        { label: 'Fertilizer', value: 'Monthly' },
-        { label: 'Humidity', value: 'High' },
-        { label: 'Flowers', value: 'Yes' }
-      ] 
-    },
-    { id: 8, 
-      name: 'Rubber Plant', 
-      image_url: RubberPlant, 
-      description: [
-        { label: 'Difficulty', value: 'Moderate' },
-        { label: 'Soil', value: 'Well-drained' },
-        { label: 'Sun', value: 'Partial shade' },
-        { label: 'Pot', value: 'Large' },
-        { label: 'Water', value: 'Moderate' },
-        { label: 'Temperature', value: '18-25°C' },
-        { label: 'Toxicity', value: 'Non-toxic' },
-        { label: 'Fertilizer', value: 'Monthly' },
-        { label: 'Humidity', value: 'High' },
-        { label: 'Flowers', value: 'Yes' }
-      ] 
-    },
-    { id: 9, 
-      name: 'Rubber Plant Tineke', 
-      image_url: RubberPlantTineke, 
-      description: [
-        { label: 'Difficulty', value: 'Moderate' },
-        { label: 'Soil', value: 'Well-drained' },
-        { label: 'Sun', value: 'Partial shade' },
-        { label: 'Pot', value: 'Large' },
-        { label: 'Water', value: 'Moderate' },
-        { label: 'Temperature', value: '18-25°C' },
-        { label: 'Toxicity', value: 'Non-toxic' },
-        { label: 'Fertilizer', value: 'Monthly' },
-        { label: 'Humidity', value: 'High' },
-        { label: 'Flowers', value: 'Yes' }
-      ] 
-    },
-    { id: 10, 
-      name: 'Tradescantia Nanouk', 
-      image_url: TradescantiaNanouk, 
-      description: [
-        { label: 'Difficulty', value: 'Moderate' },
-        { label: 'Soil', value: 'Well-drained' },
-        { label: 'Sun', value: 'Partial shade' },
-        { label: 'Pot', value: 'Large' },
-        { label: 'Water', value: 'Moderate' },
-        { label: 'Temperature', value: '18-25°C' },
-        { label: 'Toxicity', value: 'Non-toxic' },
-        { label: 'Fertilizer', value: 'Monthly' },
-        { label: 'Humidity', value: 'High' },
-        { label: 'Flowers', value: 'Yes' }
-      ] 
-    },
-    { id: 11, 
-      name: 'Variegated Vinca', 
-      image_url: VariegatedVinca, 
-      description: [
-        { label: 'Difficulty', value: 'Moderate' },
-        { label: 'Soil', value: 'Well-drained' },
-        { label: 'Sun', value: 'Partial shade' },
-        { label: 'Pot', value: 'Large' },
-        { label: 'Water', value: 'Moderate' },
-        { label: 'Temperature', value: '18-25°C' },
-        { label: 'Toxicity', value: 'Non-toxic' },
-        { label: 'Fertilizer', value: 'Monthly' },
-        { label: 'Humidity', value: 'High' },
-        { label: 'Flowers', value: 'Yes' }
-      ] 
-    },
-    { id: 12, 
-      name: 'Variegatum Spider Plant', 
-      image_url: VariegatumSpiderPlant, 
-      description: [
-        { label: 'Difficulty', value: 'Moderate' },
-        { label: 'Soil', value: 'Well-drained' },
-        { label: 'Sun', value: 'Partial shade' },
-        { label: 'Pot', value: 'Large' },
-        { label: 'Water', value: 'Moderate' },
-        { label: 'Temperature', value: '18-25°C' },
-        { label: 'Toxicity', value: 'Non-toxic' },
-        { label: 'Fertilizer', value: 'Monthly' },
-        { label: 'Humidity', value: 'High' },
-        { label: 'Flowers', value: 'Yes' }
-      ] 
-    },
-    { id: 13, 
-      name: 'White Bird of Paradise', 
-      image_url: WhiteBirdOfParadise, 
-      description: [
-        { label: 'Difficulty', value: 'Moderate' },
-        { label: 'Soil', value: 'Well-drained' },
-        { label: 'Sun', value: 'Partial shade' },
-        { label: 'Pot', value: 'Large' },
-        { label: 'Water', value: 'Moderate' },
-        { label: 'Temperature', value: '18-25°C' },
-        { label: 'Toxicity', value: 'Non-toxic' },
-        { label: 'Fertilizer', value: 'Monthly' },
-        { label: 'Humidity', value: 'High' },
-        { label: 'Flowers', value: 'Yes' }
-      ] 
-    },
-  ];
+  useEffect(() => {
+    const fetchPlants = async () => {
+      try {
+        const response = await fetch('https://perenual.com/api/species-list?key=sk-dw4q668301f97498a6117');
+        const data = await response.json();
+        setPlants(data.data); // Assuming `data.data` contains the array of plants
+      } catch (error) {
+        console.error('Error fetching plants:', error);
+      }
+    };
 
-  const filteredPlants = plants.filter(plant => plant.name.toLowerCase().includes(searchQuery.toLowerCase()));
+    fetchPlants();
+  }, []);
+
+  const fetchPlantDetails = async (id) => {
+    try {
+      const response = await fetch(`https://perenual.com/api/species/details/${id}?key=sk-dw4q668301f97498a6117`);
+      const data = await response.json();
+      setSelectedPlant(data);
+      setShowModal(true);
+    } catch (error) {
+      console.error('Error fetching plant details:', error);
+    }
+  };
+
+  const handleCardClick = (id) => {
+    fetchPlantDetails(id);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedPlant(null);
+  };
+
+  const filteredPlants = plants.filter(plant =>
+    plant.common_name?.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <>
@@ -244,7 +58,7 @@ const PlantInfo = () => {
             rel="stylesheet" 
           />
         </Helmet>
-        
+
         <h1 className="title" style={{ fontFamily: 'Shadows Into Light, Brush Script MT', fontSize: '5rem', color: 'black'}}>Plant Info</h1>
         <Navbar withSearch setSearchQuery={setSearchQuery} />
         {filteredPlants.length === 0 && (
@@ -256,22 +70,26 @@ const PlantInfo = () => {
             <Row xs={1} md={2} lg={3} className="g-4">
               {filteredPlants.map((plant) => (
                 <Col key={plant.id}>
-                  <Card>
-                    <Card.Img variant="top" src={plant.image_url} />
+                  <Card onClick={() => handleCardClick(plant.id)} style={{ cursor: 'pointer' }}>
+                    <Card.Img 
+                      variant="top" 
+                      src={plant.default_image ? plant.default_image.thumbnail : 'path/to/placeholder_image.jpg'} 
+                      className="card-img"
+                    />
                     <Card.Body className="text-center">
-                      <Card.Title style={{ fontFamily: 'Shadows Into Light, Brush Script MT',fontSize: '1.8rem', textDecoration: 'underline'}}>{plant.name}</Card.Title>
-                      <Card.Text >
-                        {Array.isArray(plant.description) ? (
-                          plant.description.map((item, index) => (
-                            <Row key={index}>
-                              <Col sm={6}><strong>{item.label}:</strong></Col>
-                              <Col sm={6}>{item.value}</Col>
-                            </Row>
-                          ))
-                        ) : (
-                          <span>{plant.description}</span>
-                        )}
-                      </Card.Text>
+                      <Card.Title style={{ fontFamily: 'Shadows Into Light, Brush Script MT', fontSize: '1.8rem', textDecoration: 'underline' }}>
+                        {plant.common_name}
+                      </Card.Title>
+                      <div>
+                        <Row>
+                          <Col sm={6}><strong>Scientific Name:</strong></Col>
+                          <Col sm={6}>{plant.scientific_name}</Col>
+                        </Row>
+                        <Row>
+                          <Col sm={6}><strong>Family:</strong></Col>
+                          <Col sm={6}>{plant.family}</Col>
+                        </Row>
+                      </div>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -279,9 +97,37 @@ const PlantInfo = () => {
             </Row>
           </div>
         </Container>
+
+        {/* Modal to display plant details */}
+        {selectedPlant && (
+          <Modal show={showModal} onHide={handleCloseModal} size="lg">
+            <Modal.Header closeButton>
+              <Modal.Title>{selectedPlant.common_name}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <img
+                src={selectedPlant.default_image ? selectedPlant.default_image.original : 'path/to/placeholder_image.jpg'}
+                alt={selectedPlant.common_name}
+                className="modal-img"
+              />
+              <h5>Scientific Name: {selectedPlant.scientific_name}</h5>
+              <p><strong>Family:</strong> {selectedPlant.family}</p>
+              <p><strong>Origin:</strong> {selectedPlant.origin}</p>
+              <p><strong>Watering:</strong> {selectedPlant.watering}</p>
+              <p><strong>Sunlight:</strong> {selectedPlant.sunlight}</p>
+              {/* Add any other relevant details you want to display */}
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleCloseModal}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        )}
       </div>
     </>
   );
 };
 
 export default PlantInfo;
+
