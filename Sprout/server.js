@@ -7,6 +7,12 @@ import cors from 'cors';
 import morgan from 'morgan';
 import fetchAndInsertData from './fetchData.js'; // Import the fetch function
 import usersRouter from './routes/users.js';
+import fs from 'fs';
+import path from 'path';
+
+const filePath = path.resolve('/usr/src/app', 'fetchData.js');
+console.log(`Checking if file exists at: ${filePath}`);
+console.log(`File exists: ${fs.existsSync(filePath)}`);
 
 // Compute __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -23,7 +29,7 @@ app.use(cors());
 app.use(morgan('dev'));
 
 // Connect to MongoDB and fetch data at start-up
-const mongoURI = 'mongodb://localhost:27017/plantDatabase';
+const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/plantDatabase';
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -62,5 +68,6 @@ mongoose.connect(mongoURI, {
     app.listen(PORT, () => {
       console.log(`Server is running on http://localhost:${PORT}`);
     });
+    
   })
   .catch(err => console.error('MongoDB connection error:', err));

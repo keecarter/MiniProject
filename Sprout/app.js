@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
-import plantRoute from './routes/plantsRoute.js';
+import plantRoute from './routes/plantRoute.js';
 
 const app = express();
 const PORT = 5000;
